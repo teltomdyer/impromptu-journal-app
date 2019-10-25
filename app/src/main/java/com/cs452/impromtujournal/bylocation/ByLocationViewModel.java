@@ -1,8 +1,6 @@
 package com.cs452.impromtujournal.bylocation;
 
-import android.util.Log;
-
-import com.cs452.impromtujournal.bydate.EntriesRepository;
+import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
 import com.cs452.impromtujournal.model.Entry;
 
 import org.jetbrains.annotations.NotNull;
@@ -20,15 +18,15 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class ByLocationViewModel extends ViewModel {
     private MutableLiveData<List<LocationListItem>> mutableLiveData;
-    private EntriesRepository entriesRepository;
+    private DjangoEntriesRepository djangoEntriesRepository;
 
     ByLocationViewModel() {
-        entriesRepository = EntriesRepository.getInstance();
+        djangoEntriesRepository = DjangoEntriesRepository.getInstance();
         mutableLiveData = new MutableLiveData<>();
     }
 
     LiveData<List<LocationListItem>> getLocationsLiveData() {
-        return Transformations.map(entriesRepository.getEntries(), entries -> {
+        return Transformations.map(djangoEntriesRepository.getEntries(), entries -> {
             Map<String, List<Entry>> locationMap = new HashMap<>();
             for (Entry entry : entries) {
                 if (!locationMap.containsKey(entry.getCity()))
@@ -46,7 +44,7 @@ public class ByLocationViewModel extends ViewModel {
     }
 
 //    public void saveEntry(Entry entry) {
-//        entriesRepository.saveEntry(entry);
+//        djangoEntriesRepository.saveEntry(entry);
 //    }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

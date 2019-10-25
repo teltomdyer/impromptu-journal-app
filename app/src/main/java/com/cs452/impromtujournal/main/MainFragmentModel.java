@@ -1,12 +1,12 @@
 package com.cs452.impromtujournal.main;
 
-public class MainViewModel {
+public class MainFragmentModel {
     public String fragment;
 
-    public MainViewModel() {
+    public MainFragmentModel() {
     }
 
-    public MainViewModel(String fragment) {
+    public MainFragmentModel(String fragment) {
         this.fragment = fragment;
     }
 

@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="android.view.View"/>
-        <variable name="model" type="com.cs452.impromtujournal.main.MainViewModel"/>
+        <variable name="model" type="com.cs452.impromtujournal.main.MainFragmentModel"/>
         <variable name="callback" type="com.cs452.impromtujournal.main.MainFragment.MenuClickCallback"/>
     </data>
     <LinearLayout

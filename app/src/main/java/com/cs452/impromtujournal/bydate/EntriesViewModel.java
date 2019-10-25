@@ -1,6 +1,7 @@
 package com.cs452.impromtujournal.bydate;
 
 import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -13,11 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class EntriesViewModel extends ViewModel {
     private MutableLiveData<List<Entry>> mutableLiveData;
-    private EntriesRepository entriesRepository;
+    private DjangoEntriesRepository djangoEntriesRepository;
 
     EntriesViewModel() {
-        entriesRepository = EntriesRepository.getInstance();
-        mutableLiveData = entriesRepository.getEntries();
+        djangoEntriesRepository = DjangoEntriesRepository.getInstance();
+        mutableLiveData = djangoEntriesRepository.getEntries();
     }
 
     LiveData<List<Entry>> getEntriesLiveData() {
@@ -25,7 +26,7 @@ public class EntriesViewModel extends ViewModel {
     }
 
 //    public void saveEntry(Entry entry) {
-//        entriesRepository.saveEntry(entry);
+//        djangoEntriesRepository.saveEntry(entry);
 //    }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

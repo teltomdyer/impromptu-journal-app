@@ -20,7 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class MainFragment extends Fragment {
-    private MainViewModel mainViewModel = new MainViewModel("by_date");
+    private MainFragmentModel mainFragmentModel = new MainFragmentModel("by_date");
     private FragmentMainBinding binding;
     private FragmentManager fragmentManager;
 
@@ -38,7 +38,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
-        binding.setModel(mainViewModel);
+        binding.setModel(mainFragmentModel);
         binding.setCallback(new MenuClickCallback());
 
         Fragment fragment = new ByDateFragment();
@@ -62,8 +62,8 @@ public class MainFragment extends Fragment {
             if (fragment != null) {
                 fragmentManager.beginTransaction()
                         .replace(R.id.fragment_container_2, fragment, fragmentName).commit();
-                mainViewModel.setFragment(fragmentName);
-                binding.setModel(mainViewModel);
+                mainFragmentModel.setFragment(fragmentName);
+                binding.setModel(mainFragmentModel);
             }
         }
     }

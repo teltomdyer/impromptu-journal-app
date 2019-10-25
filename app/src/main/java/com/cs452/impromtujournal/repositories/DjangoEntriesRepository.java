@@ -1,4 +1,4 @@
-package com.cs452.impromtujournal.bydate;
+package com.cs452.impromtujournal.repositories;
 
 import android.util.Log;
 
@@ -18,22 +18,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EntriesRepository {
+public class DjangoEntriesRepository {
     public final String TAG = "ENTRIES_REPOSITORY";
 
         private IJService ijService;
-        private static EntriesRepository instance;
+        private static DjangoEntriesRepository instance;
         private final MutableLiveData<List<Entry>> entriesData = new MutableLiveData<>();
 
         private List<Entry> entries = new ArrayList<>();
 
-        private EntriesRepository() {
+        private DjangoEntriesRepository() {
             this.ijService = new IJNetworkService().ijService;
         }
 
-        public static EntriesRepository getInstance() {
+        public static DjangoEntriesRepository getInstance() {
             if (instance == null)
-                instance = new EntriesRepository();
+                instance = new DjangoEntriesRepository();
             return instance;
         }
 
