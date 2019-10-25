@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cs452.impromtujournal.R;
-import com.cs452.impromtujournal.databinding.LocationListItemBinding;
+import com.cs452.impromtujournal.databinding.ListItemLocationBinding;
 
 import java.util.List;
 
@@ -31,8 +31,8 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
 
     @Override
     public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LocationListItemBinding binding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()), R.layout.location_list_item, parent, false);
+        ListItemLocationBinding binding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()), R.layout.list_item_location, parent, false);
 
 //        binding.setCallback(clickCallback);
         return new LocationListAdapter.LocationViewHolder(binding);
@@ -52,9 +52,9 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListAdapte
 
 
     public class LocationViewHolder extends RecyclerView.ViewHolder {
-        final LocationListItemBinding binding;
+        final ListItemLocationBinding binding;
 
-        public LocationViewHolder(LocationListItemBinding binding) {
+        public LocationViewHolder(ListItemLocationBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

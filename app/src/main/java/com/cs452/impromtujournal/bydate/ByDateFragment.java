@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentByDateBinding;
+import com.cs452.impromtujournal.main.EntryDialogController;
+import com.cs452.impromtujournal.main.EntryFragment;
 import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.test.TestFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +43,7 @@ public class ByDateFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentByDateBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_by_date, container, false);
 
-        entryListAdapter = new EntryListAdapter();
+        entryListAdapter = new EntryListAdapter(new EntryDialogController(getContext()).entryClickCallback);
         RecyclerView recyclerView = binding.entriesRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(entryListAdapter);

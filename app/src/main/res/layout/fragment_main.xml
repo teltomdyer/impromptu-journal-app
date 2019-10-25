@@ -1,0 +1,102 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="model" type="com.cs452.impromtujournal.main.MainViewModel"/>
+        <variable name="callback" type="com.cs452.impromtujournal.main.MainFragment.MenuClickCallback"/>
+    </data>
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:layout_marginEnd="@dimen/item_horizontal_margin"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:layout_marginEnd="@dimen/item_horizontal_margin"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> callback.onClick(`compose`)}">
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Button"
+                    android:textColor="@{model.fragment.equals(`compose`) ? @color/label_background : @color/disabledMenuOption}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="COMPOSE" />
+                <LinearLayout
+                    android:visibility="@{model.fragment.equals(`compose`) ? View.VISIBLE : View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="3.2dp"
+                    android:background="@color/colorAccent"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:layout_marginEnd="@dimen/item_horizontal_margin"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> callback.onClick(`by_date`)}">
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Button"
+                    android:textColor="@{model.fragment.equals(`by_date`) ? @color/label_background : @color/disabledMenuOption}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="BY DATE" />
+                <LinearLayout
+                    android:visibility="@{model.fragment.equals(`by_date`) ? View.VISIBLE : View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="3.2dp"
+                    android:background="@color/colorAccent"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginStart="@dimen/item_horizontal_margin"
+                android:layout_marginEnd="@dimen/item_horizontal_margin"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> callback.onClick(`by_location`)}">
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Button"
+                    android:textColor="@{model.fragment.equals(`by_location`) ? @color/label_background : @color/disabledMenuOption}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="BY LOCATION" />
+                <LinearLayout
+                    android:visibility="@{model.fragment.equals(`by_location`) ? View.VISIBLE : View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="3.2dp"
+                    android:background="@color/colorAccent"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/fragment_container_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+    </LinearLayout>
+</layout>

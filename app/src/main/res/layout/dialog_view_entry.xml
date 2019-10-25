@@ -1,0 +1,60 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="entry" type="com.cs452.impromtujournal.model.Entry"/>
+        <variable
+            name="exit"
+            type="com.cs452.impromtujournal.main.EntryDialogController.ExitCallback" />
+    </data>
+    <LinearLayout
+        android:id="@+id/wrapper"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="300dp"
+            android:layout_height="500dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="end">
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="X"
+                    android:textSize="28dp"
+                    android:layout_gravity="end"
+                    android:onClick="@{() -> exit.onClick()}"
+                    android:gravity="center"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@{entry.isoTime}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@{entry.city}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@{entry.promptId != null ? `Prompt: ` + entry.promptId : ``}"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:text="@{entry.entryContent}"/>
+        </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

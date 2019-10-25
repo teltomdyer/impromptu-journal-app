@@ -2,6 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="entry" type="com.cs452.impromtujournal.model.Entry"/>
+        <variable
+            name="callback"
+            type="com.cs452.impromtujournal.main.EntryDialogController.EntryClickCallback" />
     </data>
     <LinearLayout
         android:id="@+id/wrapper"
@@ -9,6 +12,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{() -> callback.onClick(entry)}"
         android:orientation="vertical"
         android:paddingStart="16dp">
 

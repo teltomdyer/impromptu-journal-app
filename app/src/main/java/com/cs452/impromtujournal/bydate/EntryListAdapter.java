@@ -7,7 +7,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.cs452.impromtujournal.R;
-import com.cs452.impromtujournal.databinding.EntryListItemBinding;
+import com.cs452.impromtujournal.databinding.ListItemEntryBinding;
+import com.cs452.impromtujournal.main.EntryDialogController;
 import com.cs452.impromtujournal.model.Entry;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,10 +23,10 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Entr
 
     List<Entry> baseList;
     List<Entry> entryList;
-//    ProjectClickCallback clickCallback;
+    EntryDialogController.EntryClickCallback entryClickCallback;
 
-    public EntryListAdapter() {
-//        this.clickCallback = clickCallback;
+    public EntryListAdapter(EntryDialogController.EntryClickCallback entryClickCallback) {
+        this.entryClickCallback = entryClickCallback;
     }
 
     public void setEntryList(List<Entry> entryList) {
@@ -37,8 +38,8 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Entr
 
     @Override
     public EntryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        EntryListItemBinding binding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()), R.layout.entry_list_item, parent, false);
+        ListItemEntryBinding binding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()), R.layout.list_item_entry, parent, false);
 
 //        binding.setCallback(clickCallback);
         return new EntryViewHolder(binding);
@@ -47,6 +48,7 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Entr
     @Override
     public void onBindViewHolder(EntryViewHolder holder, int position) {
         holder.binding.setEntry(entryList.get(position));
+        holder.binding.setCallback(entryClickCallback);
         holder.binding.executePendingBindings();
     }
 
@@ -58,9 +60,9 @@ public class EntryListAdapter extends RecyclerView.Adapter<EntryListAdapter.Entr
 
 
     public class EntryViewHolder extends RecyclerView.ViewHolder {
-        final EntryListItemBinding binding;
+        final ListItemEntryBinding binding;
 
-        public EntryViewHolder(EntryListItemBinding binding) {
+        public EntryViewHolder(ListItemEntryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
