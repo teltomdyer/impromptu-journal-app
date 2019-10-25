@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "24943779619",
+    "firebase_url": "https://impromptu-journal.firebaseio.com",
+    "project_id": "impromptu-journal",
+    "storage_bucket": "impromptu-journal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24943779619:android:9252621166957cd9efb696",
+        "android_client_info": {
+          "package_name": "com.cs452.impromtujournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24943779619-on636ieo9bjoj3allnnfhtva1ielgpt1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cs452.impromtujournal",
+            "certificate_hash": "a32eb77599321a4e1ccfa72f0dcd19d01f628862"
+          }
+        },
+        {
+          "client_id": "24943779619-sida1phqmdrbn6j1j9aqe5rhr3jathd4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6hewvyI0dzfxvRQ4HHmlKNnxSQDzTwHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24943779619-sida1phqmdrbn6j1j9aqe5rhr3jathd4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

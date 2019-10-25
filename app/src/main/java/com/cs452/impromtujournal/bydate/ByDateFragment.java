@@ -9,13 +9,10 @@ import android.view.ViewGroup;
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentByDateBinding;
 import com.cs452.impromtujournal.main.EntryDialogController;
-import com.cs452.impromtujournal.main.EntryFragment;
 import com.cs452.impromtujournal.model.Entry;
-import com.cs452.impromtujournal.test.TestFragment;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;

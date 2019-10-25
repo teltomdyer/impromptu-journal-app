@@ -1,7 +1,11 @@
 package com.cs452.impromtujournal.bydate;
 
 import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.TestData;
 import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
+import com.cs452.impromtujournal.repositories.FirebaseEntriesRepository;
+import com.cs452.impromtujournal.test.model.test.Test;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +26,8 @@ public class EntriesViewModel extends ViewModel {
     }
 
     LiveData<List<Entry>> getEntriesLiveData() {
+        if (TestData.USE_FIREBASE)
+            return new FirebaseEntriesRepository(FirebaseDatabase.getInstance().getReference("/entries"));
         return mutableLiveData;
     }
 

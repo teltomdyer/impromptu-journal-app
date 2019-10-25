@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.ActivityMainBinding;
 import com.cs452.impromtujournal.main.MainFragment;
+import com.cs452.impromtujournal.model.TestData;
 import com.cs452.impromtujournal.test.TestFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
