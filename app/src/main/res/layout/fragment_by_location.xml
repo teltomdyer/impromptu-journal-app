@@ -1,0 +1,14 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="model"
+            type="com.cs452.impromtujournal.test.model.test.Test" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/locationsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</layout>

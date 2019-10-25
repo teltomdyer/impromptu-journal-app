@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentTestBinding;
-import com.cs452.impromtujournal.test.model.Test;
+import com.cs452.impromtujournal.test.model.test.Test;
 
 import org.jetbrains.annotations.NotNull;
 

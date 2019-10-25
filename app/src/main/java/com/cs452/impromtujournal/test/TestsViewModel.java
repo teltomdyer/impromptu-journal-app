@@ -1,6 +1,6 @@
 package com.cs452.impromtujournal.test;
 
-import com.cs452.impromtujournal.test.model.Test;
+import com.cs452.impromtujournal.test.model.test.Test;
 
 import org.jetbrains.annotations.NotNull;
 

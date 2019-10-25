@@ -1,8 +1,9 @@
 package com.cs452.impromtujournal;
 
-import com.cs452.impromtujournal.test.model.PostTestResponse;
-import com.cs452.impromtujournal.test.model.Test;
-import com.cs452.impromtujournal.test.model.TestResponse;
+import com.cs452.impromtujournal.model.GetEntriesResponse;
+import com.cs452.impromtujournal.test.model.test.PostTestResponse;
+import com.cs452.impromtujournal.test.model.test.Test;
+import com.cs452.impromtujournal.test.model.test.TestResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -16,5 +17,9 @@ public interface IJService {
 
     @POST("journal/tests/")
     Call<PostTestResponse> postTests(@Body Test test);
+
+
+    @GET("journal/entryList/")
+    Call<GetEntriesResponse> getEntries();
 
 }

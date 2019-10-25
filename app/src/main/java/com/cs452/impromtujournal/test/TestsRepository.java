@@ -4,15 +4,13 @@ import android.util.Log;
 
 import com.cs452.impromtujournal.IJNetworkService;
 import com.cs452.impromtujournal.IJService;
-import com.cs452.impromtujournal.test.model.PostTestRequest;
-import com.cs452.impromtujournal.test.model.PostTestResponse;
-import com.cs452.impromtujournal.test.model.Test;
-import com.cs452.impromtujournal.test.model.TestResponse;
+import com.cs452.impromtujournal.test.model.test.PostTestResponse;
+import com.cs452.impromtujournal.test.model.test.Test;
+import com.cs452.impromtujournal.test.model.test.TestResponse;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;

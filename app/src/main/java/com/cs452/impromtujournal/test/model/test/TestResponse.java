@@ -1,4 +1,4 @@
-package com.cs452.impromtujournal.test.model;
+package com.cs452.impromtujournal.test.model.test;
 
 import java.util.List;
 

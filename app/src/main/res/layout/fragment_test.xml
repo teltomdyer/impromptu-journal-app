@@ -3,13 +3,13 @@
     <data>
         <variable
             name="model"
-            type="com.cs452.impromtujournal.test.model.Test" />
+            type="com.cs452.impromtujournal.test.model.test.Test" />
         <variable
             name="callback"
             type="com.cs452.impromtujournal.test.TestFragment.OnSaveCallback" />
         <variable
             name="newTest"
-            type="com.cs452.impromtujournal.test.model.Test" />
+            type="com.cs452.impromtujournal.test.model.test.Test" />
     </data>
 
     <LinearLayout
