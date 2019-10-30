@@ -12,6 +12,7 @@ import com.cs452.impromtujournal.bydate.ByDateFragment;
 import com.cs452.impromtujournal.databinding.FragmentByDateBinding;
 import com.cs452.impromtujournal.databinding.FragmentByLocationBinding;
 import com.cs452.impromtujournal.databinding.FragmentLoginBinding;
+import com.cs452.impromtujournal.main.MainFragment;
 import com.cs452.impromtujournal.model.State;
 import com.cs452.impromtujournal.model.User;
 
@@ -66,9 +67,9 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Username or password incorrect", Toast.LENGTH_LONG).show();
                 return;
             }
-            Fragment fragment = new ByDateFragment();
+            Fragment fragment = new MainFragment(getActivity().getSupportFragmentManager());
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container_2, fragment, "By Date Fragment").commit();
+                    .replace(R.id.fragment_container, fragment, "By Date Fragment").commit();
         }
 
         public void signUpCallback(User user) {

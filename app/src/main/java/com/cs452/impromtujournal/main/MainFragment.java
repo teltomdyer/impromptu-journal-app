@@ -42,7 +42,7 @@ public class MainFragment extends Fragment {
         binding.setModel(mainFragmentModel);
         binding.setCallback(new MenuClickCallback());
 
-        Fragment fragment = new LoginFragment();
+        Fragment fragment = new ByDateFragment();
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container_2, fragment, TestFragment.TAG).commit();

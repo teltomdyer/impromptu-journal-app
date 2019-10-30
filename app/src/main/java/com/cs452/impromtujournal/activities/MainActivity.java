@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.ActivityMainBinding;
+import com.cs452.impromtujournal.login.LoginFragment;
 import com.cs452.impromtujournal.main.MainFragment;
 import com.cs452.impromtujournal.model.TestData;
 import com.cs452.impromtujournal.test.TestFragment;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         // Add project list fragment if this is first creation
 //        TestData.populateFirebase();
         if (savedInstanceState == null) {
-            Fragment fragment = new MainFragment(getSupportFragmentManager());
+//            Fragment fragment = new MainFragment(getSupportFragmentManager());
+            Fragment fragment = new LoginFragment();
 
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, fragment, TestFragment.TAG).commit();
