@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setElevation(0);
         // Add project list fragment if this is first creation
+//        TestData.populateFirebase();
         if (savedInstanceState == null) {
             Fragment fragment = new MainFragment(getSupportFragmentManager());
 

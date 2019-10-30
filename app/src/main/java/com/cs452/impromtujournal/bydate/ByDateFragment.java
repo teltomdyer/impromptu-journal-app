@@ -10,9 +10,12 @@ import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentByDateBinding;
 import com.cs452.impromtujournal.main.EntryDialogController;
 import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.State;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
@@ -55,7 +58,12 @@ public class ByDateFragment extends Fragment {
     }
 
     private void updateUi(List<Entry> entryList) {
-        entryList.sort((o1, o2) -> o2.getTimestamp().compareTo(o1.getTimestamp()));
-        entryListAdapter.setEntryList(entryList);
+        List<Entry> sortedFiltered = new ArrayList<>();
+        for (Entry entry : entryList) {
+            if (StringUtils.equals(entry.getUsername(), State.currentUser.getUsername()))
+                sortedFiltered.add(entry);
+        }
+        sortedFiltered.sort((o1, o2) -> o2.getTimestamp().compareTo(o1.getTimestamp()));
+        entryListAdapter.setEntryList(sortedFiltered);
     }
 }

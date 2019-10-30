@@ -14,6 +14,7 @@ import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.bydate.ByDateFragment;
 import com.cs452.impromtujournal.bylocation.ByLocationFragment;
 import com.cs452.impromtujournal.databinding.FragmentMainBinding;
+import com.cs452.impromtujournal.login.LoginFragment;
 import com.cs452.impromtujournal.test.TestFragment;
 
 import org.apache.commons.lang3.StringUtils;
@@ -41,7 +42,7 @@ public class MainFragment extends Fragment {
         binding.setModel(mainFragmentModel);
         binding.setCallback(new MenuClickCallback());
 
-        Fragment fragment = new ByDateFragment();
+        Fragment fragment = new LoginFragment();
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container_2, fragment, TestFragment.TAG).commit();

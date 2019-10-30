@@ -1,15 +1,12 @@
 package com.cs452.impromtujournal.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Entry {
     private String entryId;
     private String entryContent;
     private String city;
-    private Long timestamp;
+    private String timestamp;
     private String promptId;
-    private String userId;
+    private String username;
 
     public Entry() {
     }
@@ -17,15 +14,15 @@ public class Entry {
     public Entry(String entryId,
                  String entryContent,
                  String city,
-                 Long timestamp,
+                 String timestamp,
                  String promptId,
-                 String userId) {
+                 String username) {
         this.entryId = entryId;
         this.entryContent = entryContent;
         this.city = city;
         this.timestamp = timestamp;
         this.promptId = promptId;
-        this.userId = userId;
+        this.username = username;
     }
 
     public String getEntryId() {
@@ -52,16 +49,16 @@ public class Entry {
         this.city = city;
     }
 
-    public Long getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
     public String getIsoTime() {
-        return new SimpleDateFormat("MMM d, yyyy").format(timestamp);
+        return timestamp;
     }
 
     public String getPromptId() {
@@ -72,12 +69,12 @@ public class Entry {
         this.promptId = promptId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
 
