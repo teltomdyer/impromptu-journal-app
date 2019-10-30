@@ -1,8 +1,12 @@
 package com.cs452.impromtujournal.bylocation;
 
+import android.util.Log;
+
+import com.cs452.impromtujournal.model.State;
 import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
 import com.cs452.impromtujournal.model.Entry;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -36,8 +40,15 @@ public class ByLocationViewModel extends ViewModel {
 
             List<LocationListItem> locationListItems = new ArrayList<>();
             for (String key : locationMap.keySet()) {
-                locationListItems.add(new LocationListItem(key, locationMap.get(key)));
+                List<Entry> locationEntries = new ArrayList<>();
+                for (Entry entry : locationMap.get(key)) {
+                    if (StringUtils.equals(State.currentUser.getUsername(), entry.getUsername()))
+                        locationEntries.add(entry);
+                }
+                if (locationEntries.size() > 0)
+                    locationListItems.add(new LocationListItem(key, locationEntries));
             }
+
 
             return locationListItems;
         });
