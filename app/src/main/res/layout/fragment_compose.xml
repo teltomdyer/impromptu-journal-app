@@ -2,22 +2,36 @@
     <data>
         <variable
             name="entry"
-            type="com.cs452.impromtujournal.model.Entry" />
+            type="com.cs452.impromtujournal.model.objects.Entry" />
+        <variable
+            name="prompt"
+            type="com.cs452.impromtujournal.model.objects.Prompt" />
+        <variable
+            name="callback"
+            type="com.cs452.impromtujournal.compose.ComposeFragment.SaveEntryCallback" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <EditText
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/cityHint"
-            android:text="@={entry.city}"/>
+            android:text="@{prompt.promptContent}"/>
         <EditText
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="Tap to compose"
+            android:inputType="textCapSentences|textMultiLine"
+            android:gravity="top"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/cityHint"
-            android:text="@={entry.city}"/>
+            android:layout_gravity="end"
+            android:text="Save"
+            android:onClick="@{() -> callback.onClick(entry, prompt)}"/>
 
     </LinearLayout>
 

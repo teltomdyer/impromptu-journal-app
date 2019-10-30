@@ -1,10 +1,9 @@
 package com.cs452.impromtujournal.bydate;
 
-import com.cs452.impromtujournal.model.Entry;
-import com.cs452.impromtujournal.model.TestData;
+import com.cs452.impromtujournal.model.objects.Entry;
+import com.cs452.impromtujournal.model.objects.TestData;
 import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
 import com.cs452.impromtujournal.repositories.FirebaseEntriesRepository;
-import com.cs452.impromtujournal.test.model.test.Test;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;

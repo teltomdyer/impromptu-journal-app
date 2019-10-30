@@ -1,6 +1,6 @@
 package com.cs452.impromtujournal.bylocation;
 
-import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.objects.Entry;
 
 import java.util.List;
 

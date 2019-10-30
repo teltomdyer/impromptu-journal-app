@@ -1,4 +1,8 @@
-package com.cs452.impromtujournal.model;
+package com.cs452.impromtujournal.model.objects;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 
 public class Entry {
     private String entryId;
@@ -58,7 +62,17 @@ public class Entry {
     }
 
     public String getIsoTime() {
-        return timestamp;
+        int plusIndex = timestamp.indexOf("+");
+        if (plusIndex > -1) {
+            timestamp = timestamp.substring(0, plusIndex);
+        }
+
+        String timestamp1 = timestamp;
+        if (!timestamp.contains("Z")) {
+            timestamp1 = timestamp + "Z";
+        }
+        SimpleDateFormat sdfDate = new SimpleDateFormat("MM/dd/yyyy");
+        return sdfDate.format(Instant.parse(timestamp1).toEpochMilli());
     }
 
     public String getPromptId() {
@@ -75,6 +89,10 @@ public class Entry {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public static class PostUserResponse {
+        public Boolean success;
     }
 }
 

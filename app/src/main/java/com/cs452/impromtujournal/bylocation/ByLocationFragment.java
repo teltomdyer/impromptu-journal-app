@@ -8,11 +8,9 @@ import android.view.ViewGroup;
 
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentByLocationBinding;
-import com.cs452.impromtujournal.model.Entry;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;

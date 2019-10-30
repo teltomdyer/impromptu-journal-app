@@ -3,7 +3,7 @@
     <data>
         <variable
             name="user"
-            type="com.cs452.impromtujournal.model.User" />
+            type="com.cs452.impromtujournal.model.objects.User" />
         <variable
             name="callback"
             type="com.cs452.impromtujournal.login.LoginFragment.LoginCallback" />

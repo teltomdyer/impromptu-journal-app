@@ -1,4 +1,4 @@
-package com.cs452.impromtujournal.model;
+package com.cs452.impromtujournal.model.objects;
 
 import com.google.gson.annotations.SerializedName;
 

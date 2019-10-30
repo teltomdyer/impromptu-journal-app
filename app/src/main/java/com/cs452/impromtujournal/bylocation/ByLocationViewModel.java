@@ -1,10 +1,8 @@
 package com.cs452.impromtujournal.bylocation;
 
-import android.util.Log;
-
-import com.cs452.impromtujournal.model.State;
+import com.cs452.impromtujournal.model.objects.State;
 import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
-import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.objects.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;

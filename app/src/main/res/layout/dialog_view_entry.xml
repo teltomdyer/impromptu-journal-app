@@ -2,10 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="android.view.View"/>
-        <variable name="entry" type="com.cs452.impromtujournal.model.Entry"/>
+        <variable name="entry" type="com.cs452.impromtujournal.model.objects.Entry"/>
         <variable
             name="exit"
             type="com.cs452.impromtujournal.main.EntryDialogController.ExitCallback" />
+        <variable
+            name="prompt"
+            type="com.cs452.impromtujournal.model.objects.Prompt" />
     </data>
     <LinearLayout
         android:id="@+id/wrapper"
@@ -42,12 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="@{entry.city}"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@{entry.promptId != null ? `Prompt: ` + entry.promptId : ``}"/>
+                android:text="@{`Prompt: ` + prompt.promptContent}"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

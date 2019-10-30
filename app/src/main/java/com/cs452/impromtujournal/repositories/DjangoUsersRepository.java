@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.cs452.impromtujournal.IJNetworkService;
 import com.cs452.impromtujournal.IJService;
-import com.cs452.impromtujournal.model.User;
-import com.cs452.impromtujournal.model.GetUsersResponse;
-import com.cs452.impromtujournal.model.TestData;
+import com.cs452.impromtujournal.model.objects.User;
+import com.cs452.impromtujournal.model.api.GetUsersResponse;
+import com.cs452.impromtujournal.model.objects.TestData;
 
 import org.jetbrains.annotations.NotNull;
 

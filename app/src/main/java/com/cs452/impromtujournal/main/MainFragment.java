@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.bydate.ByDateFragment;
 import com.cs452.impromtujournal.bylocation.ByLocationFragment;
+import com.cs452.impromtujournal.compose.ComposeFragment;
 import com.cs452.impromtujournal.databinding.FragmentMainBinding;
 import com.cs452.impromtujournal.login.LoginFragment;
 import com.cs452.impromtujournal.test.TestFragment;
@@ -59,6 +60,8 @@ public class MainFragment extends Fragment {
                 fragment = new ByDateFragment();
             else if (StringUtils.equals(fragmentName, "by_location"))
                 fragment = new ByLocationFragment();
+            else if (StringUtils.equals(fragmentName, "compose"))
+                fragment = new ComposeFragment();
 
             if (fragment != null) {
                 fragmentManager.beginTransaction()

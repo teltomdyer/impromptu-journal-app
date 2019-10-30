@@ -6,17 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cs452.impromtujournal.R;
-import com.cs452.impromtujournal.bylocation.LocationListAdapter;
-import com.cs452.impromtujournal.databinding.FragmentByLocationBinding;
 import com.cs452.impromtujournal.databinding.FragmentEntryBinding;
-import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.objects.Entry;
 
 import org.jetbrains.annotations.NotNull;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class EntryFragment extends Fragment {
 

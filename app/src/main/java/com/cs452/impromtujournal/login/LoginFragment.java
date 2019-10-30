@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.cs452.impromtujournal.R;
-import com.cs452.impromtujournal.bydate.ByDateFragment;
-import com.cs452.impromtujournal.databinding.FragmentByDateBinding;
-import com.cs452.impromtujournal.databinding.FragmentByLocationBinding;
 import com.cs452.impromtujournal.databinding.FragmentLoginBinding;
 import com.cs452.impromtujournal.main.MainFragment;
-import com.cs452.impromtujournal.model.State;
-import com.cs452.impromtujournal.model.User;
+import com.cs452.impromtujournal.model.objects.State;
+import com.cs452.impromtujournal.model.objects.User;
 
 import org.apache.commons.lang3.StringUtils;
 

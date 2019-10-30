@@ -9,7 +9,7 @@ import android.widget.Filterable;
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.ListItemEntryBinding;
 import com.cs452.impromtujournal.main.EntryDialogController;
-import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.objects.Entry;
 
 import org.apache.commons.lang3.StringUtils;
 

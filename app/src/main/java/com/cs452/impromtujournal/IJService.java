@@ -1,9 +1,10 @@
 package com.cs452.impromtujournal;
 
-import com.cs452.impromtujournal.model.GetEntriesResponse;
-import com.cs452.impromtujournal.model.GetUsersResponse;
-import com.cs452.impromtujournal.model.PostUserResponse;
-import com.cs452.impromtujournal.model.User;
+import com.cs452.impromtujournal.model.api.GetPromptsResponse;
+import com.cs452.impromtujournal.model.objects.Entry;
+import com.cs452.impromtujournal.model.api.GetEntriesResponse;
+import com.cs452.impromtujournal.model.api.GetUsersResponse;
+import com.cs452.impromtujournal.model.objects.User;
 import com.cs452.impromtujournal.test.model.test.PostTestResponse;
 import com.cs452.impromtujournal.test.model.test.Test;
 import com.cs452.impromtujournal.test.model.test.TestResponse;
@@ -21,7 +22,6 @@ public interface IJService {
     @POST("journal/tests/")
     Call<PostTestResponse> postTests(@Body Test test);
 
-
     @GET("journal/entries/")
     Call<GetEntriesResponse> getEntries();
 
@@ -29,6 +29,9 @@ public interface IJService {
     Call<GetUsersResponse> getUsers();
 
     @POST("journal/users/")
-    Call<PostUserResponse> postUser(@Body User user);
+    Call<Entry.PostUserResponse> postUser(@Body User user);
+
+    @GET("journal/prompts/")
+    Call<GetPromptsResponse> getPrompts();
 
 }

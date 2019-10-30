@@ -1,7 +1,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="entry" type="com.cs452.impromtujournal.model.Entry"/>
+        <variable name="entry" type="com.cs452.impromtujournal.model.objects.Entry"/>
         <variable
             name="callback"
             type="com.cs452.impromtujournal.main.EntryDialogController.EntryClickCallback" />

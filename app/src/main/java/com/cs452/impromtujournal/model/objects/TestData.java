@@ -1,4 +1,4 @@
-package com.cs452.impromtujournal.model;
+package com.cs452.impromtujournal.model.objects;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,6 +19,7 @@ public class TestData {
     }
 
     public static List<User> userList = new ArrayList<>();
+    public static List<Prompt> promptList = new ArrayList<>();
 
     public static void populateFirebase() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("/entries");

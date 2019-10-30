@@ -1,6 +1,6 @@
 package com.cs452.impromtujournal.login;
 
-import com.cs452.impromtujournal.model.User;
+import com.cs452.impromtujournal.model.objects.User;
 import com.cs452.impromtujournal.repositories.DjangoUsersRepository;
 
 import org.jetbrains.annotations.NotNull;

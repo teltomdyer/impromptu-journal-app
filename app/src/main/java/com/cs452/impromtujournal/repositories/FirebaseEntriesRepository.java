@@ -1,6 +1,6 @@
 package com.cs452.impromtujournal.repositories;
 
-import com.cs452.impromtujournal.model.Entry;
+import com.cs452.impromtujournal.model.objects.Entry;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
