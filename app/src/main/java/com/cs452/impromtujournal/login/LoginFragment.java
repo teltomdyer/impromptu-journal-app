@@ -1,5 +1,6 @@
 package com.cs452.impromtujournal.login;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class LoginFragment extends Fragment {
 
     private List<User> users;
     private Map<String, String> userPasswordMap = new HashMap<>();
+    private LoginViewModel loginViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,14 +41,15 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 
-        binding.setCallback(new LoginCallback());
+        binding.setCallback(new LoginCallback(this));
         binding.setUser(new User());
+        binding.setModel(new LoginModel(binding));
         observeViewModel();
         return binding.getRoot();
     }
 
     private void observeViewModel() {
-        LoginViewModel loginViewModel = ViewModelProviders.of(this, new LoginViewModel.Factory()).get(LoginViewModel.class);
+        loginViewModel = ViewModelProviders.of(this, new LoginViewModel.Factory()).get(LoginViewModel.class);
         loginViewModel.getLocationsLiveData().observe(this, this::updateUi);
     }
 
@@ -58,31 +61,77 @@ public class LoginFragment extends Fragment {
     }
 
     public class LoginCallback {
+
+        private Fragment parent;
+
+        public LoginCallback(Fragment parent) {
+            this.parent = parent;
+        }
+
         public void loginOnClick(User user) {
-            Log.d("LOGIN_FRAGMENT", "Login callback for " + user.getUsername());
+
             if (!loginUser(user)) {
                 Toast.makeText(getContext(), "Username or password incorrect", Toast.LENGTH_LONG).show();
                 return;
             }
-            Fragment fragment = new MainFragment(getActivity().getSupportFragmentManager());
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragment, "By Date Fragment").commit();
+            logUserIn(user);
         }
 
         public void signUpCallback(User user) {
-            if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())) {
-                Toast.makeText(getContext(), "Must provide username and password", Toast.LENGTH_LONG).show();
+            if (StringUtils.isEmpty(user.getUsername()) ||
+                    StringUtils.isEmpty(user.getPassword()) ||
+                    StringUtils.isEmpty(user.getFirstName()) ||
+                    StringUtils.isEmpty(user.getLastName())) {
+
+                Toast.makeText(getContext(), "Must provide all fields", Toast.LENGTH_LONG).show();
+                return;
             }
 
-
+            loginViewModel.saveUser(user).observe(parent, postResponse -> {
+                if (postResponse != null && postResponse.success) {
+                    Toast.makeText(getContext(), "Successful", Toast.LENGTH_LONG).show();
+                    logUserIn(user);
+                }
+                else
+                    Toast.makeText(getContext(), "Error creating user", Toast.LENGTH_LONG).show();
+            });
         }
+    }
+
+    private void logUserIn(User user) {
+        State.currentUser = user;
+        Activity activity = getActivity();
+        if (activity == null) {
+            Toast.makeText(getContext(), "Can't get activity", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Fragment fragment = new MainFragment(getActivity().getSupportFragmentManager());
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment, "By Date Fragment").commit();
     }
 
     private boolean loginUser(User user) {
         if (!userPasswordMap.containsKey(user.getUsername()))
             return false;
-        State.currentUser = user;
         return StringUtils.equals(user.getPassword(), userPasswordMap.get(user.getUsername()));
+    }
+
+    public class LoginModel {
+        private FragmentLoginBinding binding;
+        private String toggleState = "login";
+
+        public LoginModel(FragmentLoginBinding binding) {
+            this.binding = binding;
+        }
+
+        public String getToggleState() {
+            return toggleState;
+        }
+
+        public void setToggleState(String toggleState) {
+            this.toggleState = toggleState;
+            binding.setModel(this);
+        }
     }
 
 }

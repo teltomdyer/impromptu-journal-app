@@ -4,9 +4,11 @@ import android.util.Log;
 
 import com.cs452.impromtujournal.IJNetworkService;
 import com.cs452.impromtujournal.IJService;
+import com.cs452.impromtujournal.model.api.PostResponse;
 import com.cs452.impromtujournal.model.objects.Entry;
 import com.cs452.impromtujournal.model.api.GetEntriesResponse;
 import com.cs452.impromtujournal.model.objects.TestData;
+import com.cs452.impromtujournal.model.objects.User;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +26,7 @@ public class DjangoEntriesRepository {
         private IJService ijService;
         private static DjangoEntriesRepository instance;
         private final MutableLiveData<List<Entry>> entriesData = new MutableLiveData<>();
+        private final MutableLiveData<PostResponse> postEntryData = new MutableLiveData<>();
 
         private List<Entry> entries = new ArrayList<>();
 
@@ -63,22 +66,23 @@ public class DjangoEntriesRepository {
             return entriesData;
         }
 
-//        void saveEntry(Entry entry) {
-//            ijService.postEntries(entry)
-//                    .enqueue(new Callback<PostEntriesResponse>() {
-//                        @Override
-//                        public void onResponse(@NotNull Call<PostEntriesResponse> call, @NotNull Response<PostEntriesResponse> response) {
-//                            if (response.isSuccessful()) {
-//                                entries.add(entry);
-//                                entriesData.setValue(entries);
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(@NotNull Call<PostEntriesResponse> call, @NotNull Throwable t) {
-//                            Log.d(TAG, t.getLocalizedMessage());
-//                        }
-//                    });
-//        }
+    public MutableLiveData<PostResponse> postEntry(Entry entry) {
+        ijService.postEntry(entry)
+                .enqueue(new Callback<PostResponse>() {
+                    @Override
+                    public void onResponse(@NotNull Call<PostResponse> call, @NotNull Response<PostResponse> response) {
+                        if (response.isSuccessful()) {
+                            postEntryData.setValue(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NotNull Call<PostResponse> call, @NotNull Throwable t) {
+                        Log.d(TAG, t.getLocalizedMessage());
+                    }
+                });
+
+        return postEntryData;
+    }
 
 }

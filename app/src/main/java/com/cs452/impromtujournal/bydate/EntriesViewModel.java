@@ -1,5 +1,6 @@
 package com.cs452.impromtujournal.bydate;
 
+import com.cs452.impromtujournal.model.api.PostResponse;
 import com.cs452.impromtujournal.model.objects.Entry;
 import com.cs452.impromtujournal.model.objects.TestData;
 import com.cs452.impromtujournal.repositories.DjangoEntriesRepository;
@@ -30,9 +31,9 @@ public class EntriesViewModel extends ViewModel {
         return mutableLiveData;
     }
 
-//    public void saveEntry(Entry entry) {
-//        djangoEntriesRepository.saveEntry(entry);
-//    }
+    public MutableLiveData<PostResponse> postEntry(Entry entry) {
+        return djangoEntriesRepository.postEntry(entry);
+    }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 

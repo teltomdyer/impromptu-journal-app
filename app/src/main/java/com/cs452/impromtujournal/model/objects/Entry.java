@@ -3,16 +3,18 @@ package com.cs452.impromtujournal.model.objects;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.UUID;
 
 public class Entry {
     private String entryId;
     private String entryContent;
-    private String city;
+    private String city = "provo";
     private String timestamp;
     private String promptId;
     private String username;
 
     public Entry() {
+        entryId = UUID.randomUUID().toString();
     }
 
     public Entry(String entryId,

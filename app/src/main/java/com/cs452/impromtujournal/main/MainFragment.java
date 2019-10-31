@@ -22,7 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class MainFragment extends Fragment {
-    private MainFragmentModel mainFragmentModel = new MainFragmentModel("by_date");
+    private MainFragmentModel mainFragmentModel = new MainFragmentModel("compose");
     private FragmentMainBinding binding;
     private FragmentManager fragmentManager;
 
@@ -43,7 +43,7 @@ public class MainFragment extends Fragment {
         binding.setModel(mainFragmentModel);
         binding.setCallback(new MenuClickCallback());
 
-        Fragment fragment = new ByDateFragment();
+        Fragment fragment = new ComposeFragment();
 
         fragmentManager.beginTransaction()
                 .add(R.id.fragment_container_2, fragment, TestFragment.TAG).commit();

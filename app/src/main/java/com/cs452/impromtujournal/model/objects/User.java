@@ -7,7 +7,7 @@ public class User {
     String firstName;
     String lastName;
     String password;
-    Boolean displayPrompts;
+    Boolean displayPrompts = true;
 
     public User() {
     }
