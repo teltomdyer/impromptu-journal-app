@@ -1,10 +1,13 @@
 package com.cs452.impromtujournal.model.objects;
 
+import java.util.UUID;
+
 public class Prompt {
     String promptId;
     String promptContent;
 
     public Prompt() {
+        this.promptId = UUID.randomUUID().toString();
     }
 
     public Prompt(String promptId, String promptContent) {

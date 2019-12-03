@@ -1,6 +1,5 @@
 package com.cs452.impromtujournal.model.objects;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.UUID;
@@ -14,7 +13,7 @@ public class Entry {
     private String username;
 
     public Entry() {
-        entryId = UUID.randomUUID().toString();
+        this.entryId = UUID.randomUUID().toString();
     }
 
     public Entry(String entryId,
