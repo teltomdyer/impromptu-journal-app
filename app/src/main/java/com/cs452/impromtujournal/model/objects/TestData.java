@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TestData {
     public static final boolean TESTING = false;
-    public static final boolean USE_FIREBASE = false;
+    public static final boolean USE_FIREBASE = true;
     public static List<Entry> entryList = new ArrayList<>();
     public static List<User> userList = new ArrayList<>();
     public static List<Prompt> promptList = new ArrayList<>();

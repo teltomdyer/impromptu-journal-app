@@ -1,18 +1,21 @@
 package com.cs452.impromtujournal.login;
 
-import com.cs452.impromtujournal.model.api.PostResponse;
-import com.cs452.impromtujournal.model.objects.TestData;
-import com.cs452.impromtujournal.model.objects.User;
-import com.cs452.impromtujournal.repositories.DjangoUsersRepository;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.cs452.impromtujournal.model.api.PostResponse;
+import com.cs452.impromtujournal.model.objects.TestData;
+import com.cs452.impromtujournal.model.objects.User;
+import com.cs452.impromtujournal.repositories.DjangoUsersRepository;
+import com.cs452.impromtujournal.repositories.FirebaseUsersRepository;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class LoginViewModel extends ViewModel {
     private MutableLiveData<List<User>> userMutableLiveData;
@@ -24,14 +27,18 @@ public class LoginViewModel extends ViewModel {
         userMutableLiveData = djangoUsersRepository.getUsers();
     }
 
-    LiveData<List<User>> getLocationsLiveData() {
+    public LiveData<List<User>> getUsersLiveData() {
         if (TestData.USE_FIREBASE) {
-            // TODO return firebase instance
+            return new FirebaseUsersRepository(FirebaseDatabase.getInstance().getReference("/users"));
         }
         return userMutableLiveData;
     }
 
-    LiveData<PostResponse> saveUser(User user) {
+    public LiveData<PostResponse> saveUser(User user) {
+        if (TestData.USE_FIREBASE) {
+            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("/users");
+            return new FirebaseUsersRepository(userReference).postUser(userReference, user);
+        }
         return djangoUsersRepository.postUser(user);
     }
 

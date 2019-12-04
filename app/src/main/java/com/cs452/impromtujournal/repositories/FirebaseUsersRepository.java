@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.cs452.impromtujournal.model.api.PostResponse;
-import com.cs452.impromtujournal.model.objects.Entry;
+import com.cs452.impromtujournal.model.objects.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,19 +16,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FirebaseEntriesRepository extends LiveData<List<Entry>> {
-    private static final String LOG_TAG = "FIREBASE_ENTRIES_REPOSITORY";
+public class FirebaseUsersRepository extends LiveData<List<User>> {
+    private static final String LOG_TAG = "FIREBASE_USERS_REPOSITORY";
 
-    private Map<String, Entry> entries = new HashMap<>();
+    private Map<String, User> users = new HashMap<>();
 
     private final Query query;
     private final MyValueEventListener listener = new MyValueEventListener();
 
-    public FirebaseEntriesRepository(Query query) {
+    public FirebaseUsersRepository(Query query) {
         this.query = query;
     }
 
-    public FirebaseEntriesRepository(DatabaseReference ref) {
+    public FirebaseUsersRepository(DatabaseReference ref) {
         this.query = ref;
     }
 
@@ -43,13 +43,13 @@ public class FirebaseEntriesRepository extends LiveData<List<Entry>> {
     }
 
     private void update() {
-        List<Entry> updatedProjects = new ArrayList<>();
-        updatedProjects.addAll(entries.values());
+        List<User> updatedProjects = new ArrayList<>();
+        updatedProjects.addAll(users.values());
         postValue(updatedProjects);
     }
 
-    public LiveData<PostResponse> postEntry(DatabaseReference entryReference, Entry entry) {
-        entryReference.child(entry.getEntryId()).setValue(entry);
+    public LiveData<PostResponse> postUser(DatabaseReference userReference, User user) {
+        userReference.child(user.getUsername()).setValue(user);
         PostResponse postResponse = new PostResponse();
         postResponse.success = true;
         MutableLiveData liveData = new MutableLiveData<PostResponse>();
@@ -62,7 +62,7 @@ public class FirebaseEntriesRepository extends LiveData<List<Entry>> {
         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
             if (!dataSnapshot.exists())
                 return;
-            entries.put(dataSnapshot.getKey(), dataSnapshot.getValue(Entry.class));
+            users.put(dataSnapshot.getKey(), dataSnapshot.getValue(User.class));
             update();
         }
 
@@ -71,7 +71,7 @@ public class FirebaseEntriesRepository extends LiveData<List<Entry>> {
             if (!dataSnapshot.exists())
                 return;
 
-            entries.put(dataSnapshot.getKey(), dataSnapshot.getValue(Entry.class));
+            users.put(dataSnapshot.getKey(), dataSnapshot.getValue(User.class));
             update();
         }
 
@@ -79,7 +79,7 @@ public class FirebaseEntriesRepository extends LiveData<List<Entry>> {
         public void onChildRemoved(DataSnapshot dataSnapshot) {
             if (!dataSnapshot.exists())
                 return;
-            entries.remove(dataSnapshot.getKey());
+            users.remove(dataSnapshot.getKey());
             update();
         }
 

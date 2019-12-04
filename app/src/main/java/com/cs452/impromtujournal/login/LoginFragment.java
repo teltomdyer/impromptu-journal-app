@@ -2,11 +2,14 @@ package com.cs452.impromtujournal.login;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.cs452.impromtujournal.R;
 import com.cs452.impromtujournal.databinding.FragmentLoginBinding;
@@ -19,10 +22,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 public class LoginFragment extends Fragment {
 
@@ -50,7 +49,7 @@ public class LoginFragment extends Fragment {
 
     private void observeViewModel() {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModel.Factory()).get(LoginViewModel.class);
-        loginViewModel.getLocationsLiveData().observe(this, this::updateUi);
+        loginViewModel.getUsersLiveData().observe(this, this::updateUi);
     }
 
     private void updateUi(List<User> users) {
@@ -69,11 +68,15 @@ public class LoginFragment extends Fragment {
         }
 
         public void loginOnClick(User user) {
+            // When the Login button is clicked, gets binding data from the UI for the proposed user
 
+            // loginUser is used to check if the user exists and is authorized to login
             if (!loginUser(user)) {
                 Toast.makeText(getContext(), "Username or password incorrect", Toast.LENGTH_LONG).show();
                 return;
             }
+
+            // If the user exists and is authorized, login the existing user
             logUserIn(user);
         }
 
@@ -105,14 +108,22 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), "Can't get activity", Toast.LENGTH_LONG).show();
             return;
         }
+
+        // The user is authenticated, move to the main app with that the currentUser set
         Fragment fragment = new MainFragment(getActivity().getSupportFragmentManager());
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment, "By Date Fragment").commit();
     }
 
     private boolean loginUser(User user) {
-        if (!userPasswordMap.containsKey(user.getUsername()))
+        // Check if username exists
+
+        if (!userPasswordMap.containsKey(user.getUsername())) {
+            // If the username doesn't even exist, return false
             return false;
+        }
+
+        // If the username exists, check if the password is correct.
         return StringUtils.equals(user.getPassword(), userPasswordMap.get(user.getUsername()));
     }
 
